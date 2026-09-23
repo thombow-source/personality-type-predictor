@@ -1,0 +1,16 @@
+# MLflow tracking store and artifacts
+mlflow.db
+mlruns/
+mlartifacts/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Virtual Environment
+.venv/
+
+# Windows / System-Dateien
+Thumbs.db
+Desktop.ini
+.DS_Store
