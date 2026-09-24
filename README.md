@@ -71,8 +71,6 @@ Dieser Prozess wird K-mal wiederholt, sodass jeder Block genau einmal als ungese
 ```mermaid
 flowchart TD
     %% Phase 1: Environment & Repository
-   ```mermaid
-flowchart TD
     subgraph P1 ["1. Setup & Environment (Linux)"]
         A1([Start: Neues Projekt auf Linux]) --> A2[Projektordner erstellen & betreten: <br>mkdir personality-predictor && cd ...]
         A2 --> A3[Virtuelle Umgebung anlegen: <br>python3 -m venv .venv]
