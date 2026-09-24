@@ -91,7 +91,7 @@ flowchart TD
     subgraph P3 ["3. Modeling & MLflow"]
         B4 --> C1[<code>modeling.ipynb</code> ausführen]
         C1 --> C2[Preprocessing Pipeline definieren: <br><code>ColumnTransformer</code>]
-        C2 --> C3[Model Evaluation: <br>5-Fold <code>StratifiedKFold</code> CV ($F1\text{-Macro}$)]
+        C2 --> C3[Model Evaluation: <br>5-Fold <code>StratifiedKFold</code> ($F1\text{-Macro}$)]
         C3 --> C4[MLflow Server / Tracking starten & Run loggen: <br><code>mlflow.sklearn.log_model(..., serialization_format='cloudpickle')</code>]
         C4 --> C5[Champion Run ID kopieren]
     end
