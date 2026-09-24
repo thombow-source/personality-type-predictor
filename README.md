@@ -68,3 +68,40 @@ Dieser Prozess wird K-mal wiederholt, sodass jeder Block genau einmal als ungese
 
 **Damit wir unser bestes Modell (`HistGradientBoostingClassifier`) später in der Streamlit-App verwenden können, führen wir als Nächstes ein explizites `fit()` auf den gesamten Daten durch und loggen dieses fertige Modell-Artefakt direkt in MLflow!**
 """
+```mermaid
+flowchart TD
+    %% Phase 1: Environment & Repository
+    subgraph P1 ["1. Setup & Environment (Linux)"]
+        A1([Start: Neues Projekt auf Linux]) --> A2[Projektordner erstellen & betreten: <br><code>mkdir personality-predictor && cd ...</code>]
+        A2 --> A3[Virtuelle Umgebung anlegen: <br><code>python3 -m venv .venv</code>]
+        A3 --> A4[<code>.venv</code> explizit aktivieren: <br><code>source .venv/bin/activate</code>]
+        A4 --> A5[Git Repository initialisieren & .gitignore erstellen: <br><code>git init</code>]
+        A5 --> A6[Pakete installieren: <br><code>pip install -r requirements.txt</code>]
+    end
+
+    %% Phase 2: Data & EDA
+    subgraph P2 ["2. Data Pipeline & EDA"]
+        A6 --> B1[Rohdaten ablegen: <code>data/data.csv</code>]
+        B1 --> B2[Jupyter / VS Code starten & <code>eda.ipynb</code> ausführen]
+        B2 --> B3[Data Cleaning & Missing Value Check]
+        B3 --> B4[Bereinigten Datensatz exportieren: <br><code>data/data_processed.csv</code>]
+    end
+
+    %% Phase 3: Modeling & Tracking
+    subgraph P3 ["3. Modeling & MLflow"]
+        B4 --> C1[<code>modeling.ipynb</code> ausführen]
+        C1 --> C2[Preprocessing Pipeline definieren: <br><code>ColumnTransformer</code>]
+        C2 --> C3[Model Evaluation: <br>5-Fold <code>StratifiedKFold</code> CV ($F1\text{-Macro}$)]
+        C3 --> C4[MLflow Server / Tracking starten & Run loggen: <br><code>mlflow.sklearn.log_model(..., serialization_format='cloudpickle')</code>]
+        C4 --> C5[Champion Run ID kopieren]
+    end
+
+    %% Phase 4: App & Version Control
+    subgraph P4 ["4. Deployment & Version Control"]
+        C5 --> D1[<code>app.py</code> mit Run ID konfigurieren]
+        D1 --> D2[Streamlit lokal testen: <br><code>streamlit run app.py</code>]
+        D2 --> D3[Git Stage & Commit: <br><code>git add . && git commit -m '...'</code>]
+        D3 --> D4[GitHub Remote verknüpfen & pushen: <br><code>git push -u origin main</code>]
+        D4 --> D5([Ziel erreicht: Production Ready auf Linux])
+    end
+```
