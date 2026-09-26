@@ -11,7 +11,7 @@ Bitte beantworte die folgenden Fragen und gib deine demografischen Daten an.
 
 # 2. RUN_ID deines Champions hier einfügen!
 # Ersetze den Platzhalter durch deine tatsächliche Run ID aus MLflow!
-RUN_ID = "619692310ef34ec8af105180c29eb1a7"
+RUN_ID = "7544cecc331849b0ba5adc59ab03a06b"
 
 # Modell aus MLflow laden (mit Caching für schnelle Ladezeiten)
 @st.cache_resource
