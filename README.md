@@ -66,5 +66,14 @@ Dieser Prozess wird K-mal wiederholt, sodass jeder Block genau einmal als ungese
 ***Was bedeutet das für unser finales Modell?***
 `cross_val_score()` dient nur zur fairen Bewertung der Modellleistung – es speichert am Ende kein einzelnes, fertiges Modell ab.
 
-**Damit wir unser bestes Modell (`HistGradientBoostingClassifier`) später in der Streamlit-App verwenden können, führen wir als Nächstes ein explizites `fit()` auf den gesamten Daten durch und loggen dieses fertige Modell-Artefakt direkt in MLflow!**
+**Damit wir unser bestes Modell (`HistGradientBoostingClassifier`) später in der Streamlit-App verwenden können, führen wir als Nächstes ein explizites `fit()` auf den gesamten Daten durch und loggen dieses fertige Modell-Artefakt direkt in MLflow und geben die RUN_ID aus.**
+**Streamlit Web-App konfigurieren & starten:**
+   * Trage generierte `RUN_ID` in die `app.py` ein:
+     ```python
+     RUN_ID = "DEINE_KOPIERTE_RUN_ID"
+     ```
+   * Starte die Web-App anschließend im Terminal:
+     ```bash
+     streamlit run app.py
+     ```
 """
